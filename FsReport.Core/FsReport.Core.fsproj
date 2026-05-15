@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <Authors>Mashiro</Authors>
+	  <Product>FsReport.Core</Product>
+	  <Copyright>Copyright (c) 2026 $(Authors)</Copyright>
+	  <Version>$(VersionPrefix)$(VersionSuffix)</Version>
+	  <VersionPrefix>0.1.0</VersionPrefix>
+	  <VersionSuffix>beta.1</VersionSuffix>
+	  <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="PathValidator.fs" />
+    <Compile Include="PathInfo.fs" />
+    <Compile Include="SettingsConfigurator.fs" />
+    <Compile Include="TemplateFileHandler.fs" />
+    <Compile Include="ReportFileHandler.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FsReport.Data\FsReport.Data.csproj" />
+  </ItemGroup>
+
+</Project>
