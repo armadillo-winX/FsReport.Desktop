@@ -427,6 +427,8 @@ namespace FsReport.Desktop
         {
             try
             {
+                if (!string.IsNullOrEmpty(ReportRootDirBox.Text))
+                    SettingsConfigurator.SaveReportRootDirConf(ReportRootDirBox.Text);
                 SettingsConfigurator.SaveReportFolderNameConfig(this.SubjectFolderNameDictionary);
             }
             catch (Exception ex)
