@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FsReport.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="452" Width="435">
+        Title="MainWindow" Height="452" Width="435" Closing="MainWindowClosing">
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
             <MenuItem x:Name="FileMenu" Header="ファイル(_F)">

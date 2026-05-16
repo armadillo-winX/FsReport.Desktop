@@ -422,5 +422,18 @@ namespace FsReport.Desktop
                 }
             }
         }
+
+        private void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                SettingsConfigurator.SaveReportFolderNameConfig(this.SubjectFolderNameDictionary);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"設定の保存に失敗．\n{ex.Message}", "エラー",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
