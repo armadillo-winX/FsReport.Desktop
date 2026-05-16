@@ -15,6 +15,6 @@ module PathInfo =
 
     let reportFileNameTemplateConfig = $"{applicationDirectory}\\ReportFileNameTemplateConfig.txt"
 
-    let openFileConfig = $"{applicationDirectory}\\FileAssociation.json"
+    let fileAssociationConfig = $"{applicationDirectory}\\FileAssociation.json"
 
     let templatesDirectory = $"{applicationDirectory}\\Templates"

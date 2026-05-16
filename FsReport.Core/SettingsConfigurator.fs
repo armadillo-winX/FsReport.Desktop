@@ -47,8 +47,8 @@ module SettingsConfigurator =
 
     let GetFileAssociationDictionary () =
         let mutable fileAssociationDictionary = new Dictionary<string, string>()
-        if File.Exists(PathInfo.openFileConfig) then
-            let config = File.ReadAllText(PathInfo.openFileConfig)
+        if File.Exists(PathInfo.fileAssociationConfig) then
+            let config = File.ReadAllText(PathInfo.fileAssociationConfig)
             let serializeOption = new JsonSerializerOptions()
             serializeOption.Encoder <- JavaScriptEncoder.Create(UnicodeRanges.All)
             serializeOption.WriteIndented <- true
@@ -60,5 +60,5 @@ module SettingsConfigurator =
         serializeOption.Encoder <- JavaScriptEncoder.Create(UnicodeRanges.All)
         serializeOption.WriteIndented <- true
         let jsonData = JsonSerializer.Serialize(fileAssociationDictionary, serializeOption)
-        File.WriteAllText(PathInfo.openFileConfig, jsonData)
+        File.WriteAllText(PathInfo.fileAssociationConfig, jsonData)
 
