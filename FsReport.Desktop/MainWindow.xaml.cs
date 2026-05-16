@@ -274,8 +274,7 @@ namespace FsReport.Desktop
             var addItem = new ComboBoxItem()
             {
                 Uid = "AddSubject",
-                Content = "新規追加",
-                IsEnabled = false
+                Content = "新規追加"
             };
             SubjectComboBox.Items.Add(addItem);
         }
