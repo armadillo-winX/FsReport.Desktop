@@ -31,7 +31,7 @@ namespace FsReport.Desktop
         {
             InitializeComponent();
 
-            this.Title = $"{VersionInfo.Name} ver.{VersionInfo.Version}";
+            this.Title = $"{VersionInfo.Name}";
             OptionalReportFolderNameLabel.IsEnabled = false;
             OptionalReportFolderNameBox.IsEnabled = false;
 
