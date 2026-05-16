@@ -349,6 +349,7 @@ namespace FsReport.Desktop
             string index = ((MenuItem)sender).Uid.ToString();
             string parameter = parameterDictionary[index];
             ReportFileNameBox.Text += parameter;
+            _ = ReportFileNameBox.Focus();
         }
 
         private void ReportTypeComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
