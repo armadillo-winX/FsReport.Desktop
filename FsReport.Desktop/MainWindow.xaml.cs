@@ -282,11 +282,11 @@ namespace FsReport.Desktop
 
         private void AboutMenuItemClick(object sender, RoutedEventArgs e)
         {
-            AboutDialog aboutDialog = new()
-            {
-                Owner = this
-            };
-            aboutDialog.ShowDialog();
+            string information =
+                $"{VersionInfo.Name} ver.{VersionInfo.Version}\n\n{VersionInfo.Copyright}\n" +
+                $"system: {VersionInfo.System}\nruntime: {VersionInfo.Runtime}";
+            MessageBox.Show(this, information, "バージョン情報",
+                MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void AlwaysOnTopMenuItemClick(object sender, RoutedEventArgs e)
