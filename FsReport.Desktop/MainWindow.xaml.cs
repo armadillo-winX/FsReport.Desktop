@@ -132,20 +132,53 @@ namespace FsReport.Desktop
                     return;
                 }
 
-                bool result = this.SubjectFolderNameDictionary.TryGetValue(subject, out string? subjectFolderName);
+                string? subjectFolderName = null;
+
+                if (subjectSelectionUid == "AddSubject")
+                {
+                    AddSubjectDialog addSubjectDialog = new()
+                    {
+                        Owner = this
+                    };
+
+                    if (addSubjectDialog.ShowDialog() == true
+                        && !string.IsNullOrEmpty(addSubjectDialog.SubjectName)
+                        && !string.IsNullOrEmpty(addSubjectDialog.SubjectFolderName))
+                    {
+                        subject = addSubjectDialog.SubjectName;
+                        subjectFolderName = addSubjectDialog.SubjectFolderName;
+                        bool addResult = this.SubjectFolderNameDictionary.TryAdd(subject, subjectFolderName);
+                        if (!addResult)
+                        {
+                            MessageBox.Show(this,
+                                $"科目 '{subject}' は既に割り当てられています．", "エラー",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "新規追加する科目を設定する必要があります．", VersionInfo.Name,
+                            MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+                else
+                {
+                    bool result = this.SubjectFolderNameDictionary.TryGetValue(subject, out subjectFolderName);
+
+                    if (!result)
+                    {
+                        MessageBox.Show(this, "科目に割り当てられるフォルダ名が設定されていません．" +
+                            "各々の科目にはレポートを格納するフォルダの名前を設定する必要があります．",
+                            VersionInfo.Name, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
+                }
 
                 if (subjectFolderName == null)
                 {
                     MessageBox.Show(this, "科目に割り当てられたフォルダ名が正しい値ではありません．",
                         "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
-                if (!result)
-                {
-                    MessageBox.Show(this, "科目に割り当てられるフォルダ名が設定されていません．" +
-                        "各々の科目にはレポートを格納するフォルダの名前を設定する必要があります．",
-                        VersionInfo.Name, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
 
