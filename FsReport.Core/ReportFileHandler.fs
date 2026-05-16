@@ -44,5 +44,5 @@ module ReportFileHandler =
     let OpenReport (reportFilePath: string) (applicationPath: string) =
         let processStartInfo = new ProcessStartInfo()
         processStartInfo.FileName <- applicationPath
-        processStartInfo.Arguments <- reportFilePath
+        processStartInfo.Arguments <- $"\"{reportFilePath}\""
         Process.Start(processStartInfo)
