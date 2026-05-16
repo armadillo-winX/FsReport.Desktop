@@ -37,7 +37,7 @@ module ReportFileHandler =
         Directory.CreateDirectory(reportDirectory) |> ignore
         let templateFilePath = $"{PathInfo.templatesDirectory}\\{reportCreationInfo.TemplateFileName}"
         let extension = Path.GetExtension(templateFilePath)
-        let reportFilePath = $"{reportDirectory}\\{reportCreationInfo.ReportFileNameWithoutExtension}{extension}"
+        let reportFilePath = $"{reportDirectory}\\{reportFileNameFormatted}{extension}"
         File.Copy(templateFilePath, reportFilePath)
         reportFilePath
 
