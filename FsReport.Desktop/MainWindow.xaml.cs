@@ -301,6 +301,20 @@ namespace FsReport.Desktop
             ReportTypeComboBox.SelectedIndex = mainWindowSettings.ReportTypeIndex;
         }
 
+        private void SaveMainWindowSettings()
+        {
+            MainWindowSettings mainWindowSettings = new()
+            {
+                MainWindowWidth = this.Width,
+                MainWindowHeight = this.Height,
+                ReportTypeIndex = ReportTypeComboBox.SelectedIndex,
+                ReportFileName = ReportFileNameBox.Text,
+                AlwaysOnTop = AlwaysOnTopMenuItem.IsChecked,
+                AutoOpenReportFile = AutomaticallyOpenReportFileCheckBox.IsChecked == true,
+            };
+            SettingsConfigurator.SaveMainWindowSettings(mainWindowSettings);
+        }
+
         private void SetSubjectComboBox()
         {
             if (this.SubjectFolderNameDictionary != null)
