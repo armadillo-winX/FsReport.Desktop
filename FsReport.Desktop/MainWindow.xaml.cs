@@ -174,6 +174,12 @@ namespace FsReport.Desktop
                             VersionInfo.Name, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
+                    else
+                    {
+                        SubjectComboBox.SelectedIndex = -1;
+                        SubjectComboBox.Items.Clear();
+                        SetSubjectComboBox();
+                    }
 
                 }
 
