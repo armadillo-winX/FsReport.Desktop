@@ -155,6 +155,12 @@ namespace FsReport.Desktop
                                 MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
+                        else
+                        {
+                            SubjectComboBox.SelectedIndex = -1;
+                            SubjectComboBox.Items.Clear();
+                            SetSubjectComboBox();
+                        }
                     }
                     else
                     {
@@ -174,13 +180,6 @@ namespace FsReport.Desktop
                             VersionInfo.Name, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
-                    else
-                    {
-                        SubjectComboBox.SelectedIndex = -1;
-                        SubjectComboBox.Items.Clear();
-                        SetSubjectComboBox();
-                    }
-
                 }
 
                 if (subjectFolderName == null)
