@@ -472,6 +472,7 @@ namespace FsReport.Desktop
                 if (!string.IsNullOrEmpty(ReportRootDirBox.Text))
                     SettingsConfigurator.SaveReportRootDirConf(ReportRootDirBox.Text);
                 SettingsConfigurator.SaveReportFolderNameConfig(this.SubjectFolderNameDictionary);
+                SaveWindowSettings();
             }
             catch (Exception ex)
             {
