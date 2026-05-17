@@ -310,7 +310,7 @@ namespace FsReport.Desktop
             ReportTypeComboBox.SelectedIndex = mainWindowSettings.ReportTypeIndex;
         }
 
-        private void SaveMainWindowSettings()
+        private void SaveWindowSettings()
         {
             MainWindowSettings mainWindowSettings = new()
             {
