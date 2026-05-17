@@ -19,9 +19,6 @@ namespace FsReport.Desktop
             set
             {
                 _subjectFolderNameDictionary = value;
-                SubjectComboBox.SelectedIndex = -1;
-                SubjectComboBox.Items.Clear();
-                SetSubjectComboBox();
             } 
         }
 
@@ -62,6 +59,9 @@ namespace FsReport.Desktop
             try
             {
                 this.SubjectFolderNameDictionary = SettingsConfigurator.GetSubjectFolderNameDictionary();
+                SubjectComboBox.SelectedIndex = -1;
+                SubjectComboBox.Items.Clear();
+                SetSubjectComboBox();
             }
             catch (Exception ex)
             {
