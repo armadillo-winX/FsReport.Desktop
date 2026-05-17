@@ -1,5 +1,6 @@
 ﻿namespace FsReport.Core
 
+open FsReport.Data
 open System
 open System.Collections.Generic
 open System.IO
@@ -44,6 +45,13 @@ module SettingsConfigurator =
         serializeOption.WriteIndented <- true
         let jsonData = JsonSerializer.Serialize(reportDirNameDictionary, serializeOption)
         File.WriteAllText(reportDirNameConfig, jsonData)
+
+    let SaveMainWindowSettings (mainWindowSettings: MainWindowSettings) =
+        let serializeOption = new JsonSerializerOptions()
+        serializeOption.Encoder <- JavaScriptEncoder.Create(UnicodeRanges.All)
+        serializeOption.WriteIndented <- true
+        let jsonData = JsonSerializer.Serialize(mainWindowSettings, serializeOption)
+        File.WriteAllText(PathInfo.mainWindowConfig, jsonData)
 
     let GetFileAssociationDictionary () =
         let mutable fileAssociationDictionary = new Dictionary<string, string>()
