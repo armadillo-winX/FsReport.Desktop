@@ -9,6 +9,8 @@
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
             <MenuItem x:Name="FileMenu" Header="ファイル(_F)">
+                <MenuItem x:Name="CreateMenuItem" Header="レポートを作成(_C)" Click="CreateButtonClick"/>
+                <Separator/>
                 <MenuItem x:Name="ExitMenuItem" Header="終了(_X)" Click="ExitMenuItemClick"/>
             </MenuItem>
             <MenuItem x:Name="OptionMenu" Header="オプション(_O)">
