@@ -76,6 +76,15 @@ namespace FsReport.Desktop
             {
                 MessageBox.Show(ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            try
+            {
+                ConfigureWindowSettings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CreateReport()
