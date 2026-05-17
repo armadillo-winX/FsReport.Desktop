@@ -13,6 +13,8 @@ module PathInfo =
 
     let subjectFolderNameConfig = $"{applicationDirectory}\\SubjectFolderNameConfig.json"
 
+    let mainWindowConfig = $"{applicationDirectory}\\MainWindowSettings.json"
+
     let reportFileNameTemplateConfig = $"{applicationDirectory}\\ReportFileNameTemplateConfig.txt"
 
     let fileAssociationConfig = $"{applicationDirectory}\\FileAssociation.json"
