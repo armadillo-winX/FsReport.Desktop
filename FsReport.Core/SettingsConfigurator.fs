@@ -46,6 +46,24 @@ module SettingsConfigurator =
         let jsonData = JsonSerializer.Serialize(reportDirNameDictionary, serializeOption)
         File.WriteAllText(reportDirNameConfig, jsonData)
 
+    let ConfigureMainWindowSettings () =
+        let mutable mainWindowSettings = new MainWindowSettings()
+        if File.Exists(PathInfo.mainWindowConfig) then
+            let config = File.ReadAllText(PathInfo.mainWindowConfig)
+            let serializeOption = new JsonSerializerOptions()
+            serializeOption.Encoder <- JavaScriptEncoder.Create(UnicodeRanges.All)
+            serializeOption.WriteIndented <- true
+            mainWindowSettings <- JsonSerializer.Deserialize<MainWindowSettings>(config, serializeOption)
+            mainWindowSettings
+        else
+            mainWindowSettings.MainWindowHeight <- 452
+            mainWindowSettings.MainWindowWidth <- 435
+            mainWindowSettings.AlwaysOnTop <- false
+            mainWindowSettings.AutoOpenReportFile <- true
+            mainWindowSettings.ReportFileName <- ""
+            mainWindowSettings.ReportTypeIndex <- 0
+            mainWindowSettings
+
     let SaveMainWindowSettings (mainWindowSettings: MainWindowSettings) =
         let serializeOption = new JsonSerializerOptions()
         serializeOption.Encoder <- JavaScriptEncoder.Create(UnicodeRanges.All)
