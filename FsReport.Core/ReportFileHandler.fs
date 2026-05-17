@@ -11,8 +11,9 @@ module ReportFileHandler =
         let mutable reportFileNameFormatted = reportCreationInfo.ReportFileNameWithoutExtension;
         reportFileNameFormatted <- reportFileNameFormatted.Replace("%SubjectName%", reportCreationInfo.SubjectName).Replace("%SubjectFolder%", reportCreationInfo.SubjectFolderName)
         if Directory.Exists(subjectDirectory) = false then Directory.CreateDirectory(subjectDirectory) |> ignore
-        let reportDirectory = 
-            if reportCreationInfo.Type = ReportType.Numbering then
+        let reportDirectory =
+            match reportCreationInfo with
+            | r when r.Type = ReportType.Numbering -> 
                 let mutable i = 1
                 let mutable numbering = i.ToString("D2")
                 while Directory.Exists($"{subjectDirectory}\\{numbering}") do
@@ -20,20 +21,18 @@ module ReportFileHandler =
                     numbering <- i.ToString("D2")
                 reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", numbering).Replace("%ReportType%", "Numbering")
                 $"{subjectDirectory}\\{numbering}"
-            elif reportCreationInfo.Type = ReportType.Midterm then
+            | r when r.Type = ReportType.Midterm ->
                 reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", "Midterm").Replace("%ReportType%", "Midterm")
                 $"{subjectDirectory}\\Midterm"
-            elif reportCreationInfo.Type = ReportType.Final then
+            | r when r.Type = ReportType.Final ->
                 reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", "Final").Replace("%ReportType%", "Final")
                 $"{subjectDirectory}\\Final"
-            else
-                reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportType%", "Other")
-                if String.IsNullOrEmpty(reportCreationInfo.ReportFolderNameOptional) = false then
-                    reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", reportCreationInfo.ReportFolderNameOptional)
-                    $"{subjectDirectory}\\{reportCreationInfo.ReportFolderNameOptional}"
-                else
-                    reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", "Report")
-                    $"{subjectDirectory}\\Report"
+            | r when String.IsNullOrEmpty(r.ReportFolderNameOptional) = false ->
+                reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", reportCreationInfo.ReportFolderNameOptional)
+                $"{subjectDirectory}\\{reportCreationInfo.ReportFolderNameOptional}"
+            |_ -> 
+                reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", "Report")
+                $"{subjectDirectory}\\Report"
         Directory.CreateDirectory(reportDirectory) |> ignore
         let templateFilePath = $"{PathInfo.templatesDirectory}\\{reportCreationInfo.TemplateFileName}"
         let extension = Path.GetExtension(templateFilePath)
