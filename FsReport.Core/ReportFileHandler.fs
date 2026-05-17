@@ -28,10 +28,10 @@ module ReportFileHandler =
                 reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", "Final").Replace("%ReportType%", "Final")
                 $"{subjectDirectory}\\Final"
             | r when String.IsNullOrEmpty(r.ReportFolderNameOptional) = false ->
-                reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", reportCreationInfo.ReportFolderNameOptional).Replace("%ReportType%", "Other")
+                reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", reportCreationInfo.ReportFolderNameOptional).Replace("%ReportType%", "Other")
                 $"{subjectDirectory}\\{reportCreationInfo.ReportFolderNameOptional}"
             |_ -> 
-                reportFileNameFormatted<- reportFileNameFormatted.Replace("%ReportFolder%", "Report").Replace("%ReportType%", "Other")
+                reportFileNameFormatted <- reportFileNameFormatted.Replace("%ReportFolder%", "Report").Replace("%ReportType%", "Other")
                 $"{subjectDirectory}\\Report"
         Directory.CreateDirectory(reportDirectory) |> ignore
         let templateFilePath = $"{PathInfo.templatesDirectory}\\{reportCreationInfo.TemplateFileName}"
