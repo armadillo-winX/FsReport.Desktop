@@ -59,7 +59,7 @@ module SettingsConfigurator =
             mainWindowSettings.MainWindowHeight <- 452
             mainWindowSettings.MainWindowWidth <- 435
             mainWindowSettings.AlwaysOnTop <- false
-            mainWindowSettings.AutoOpenReportFile <- true
+            mainWindowSettings.AutoOpenReportFile <- false
             mainWindowSettings.ReportFileName <- ""
             mainWindowSettings.ReportTypeIndex <- 0
             mainWindowSettings
