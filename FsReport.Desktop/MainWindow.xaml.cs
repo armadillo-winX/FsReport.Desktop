@@ -289,6 +289,18 @@ namespace FsReport.Desktop
             }
         }
 
+        private void ConfigureWindowSettings()
+        {
+            MainWindowSettings mainWindowSettings = SettingsConfigurator.ConfigureMainWindowSettings();
+            this.Width = mainWindowSettings.MainWindowWidth;
+            this.Height = mainWindowSettings.MainWindowHeight;
+            ReportFileNameBox.Text = mainWindowSettings.ReportFileName;
+            AlwaysOnTopMenuItem.IsChecked = mainWindowSettings.AlwaysOnTop;
+            this.Topmost = mainWindowSettings.AlwaysOnTop;
+            AutomaticallyOpenReportFileCheckBox.IsChecked = mainWindowSettings.AutoOpenReportFile;
+            ReportTypeComboBox.SelectedIndex = mainWindowSettings.ReportTypeIndex;
+        }
+
         private void SetSubjectComboBox()
         {
             if (this.SubjectFolderNameDictionary != null)
