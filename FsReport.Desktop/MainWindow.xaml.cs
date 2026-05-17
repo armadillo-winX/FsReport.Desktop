@@ -153,12 +153,14 @@ namespace FsReport.Desktop
                             MessageBox.Show(this,
                                 $"科目 '{subject}' は既に割り当てられています．", "エラー",
                                 MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
                         }
                     }
                     else
                     {
                         MessageBox.Show(this, "新規追加する科目を設定する必要があります．", VersionInfo.Name,
                             MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
                     }
                 }
                 else
